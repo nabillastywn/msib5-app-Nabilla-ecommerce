@@ -50,8 +50,9 @@
 </template>
 
 <script setup>
-import { categories } from "../stores/categories.data";
+import { categories } from "../store/categories.data";
 </script>
 
 <style scoped></style>
 <!-- :src="`/img/category/${category.fileName}.png`" -->
+../store/categories.data

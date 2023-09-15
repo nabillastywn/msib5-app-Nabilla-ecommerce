@@ -11,10 +11,20 @@
       </div>
 
       <!-- Right-aligned elements -->
-      <div class="mt-8 mr-24 flex space-x-8 items-center">
-        <router-link to="/products/shoppingCart">
+      <div class="mt-8 mr-24 flex space-x-8 items-center relative">
+        <!-- Tambahkan class "relative" di sini -->
+        <NuxtLink to="/products/shoppingCart">
           <img src="../assets/img/shopping-cart-03.svg" />
-        </router-link>
+          <span
+            class="bg-amber-600 text-white absolute top-3 right-12 w-5 h-5 rounded-full flex items-center justify-center font-semibold text-xs"
+          >
+            {{
+              Object.keys(cart.cart).length !== 0
+                ? cart.cart.products.length
+                : 0
+            }}
+          </span>
+        </NuxtLink>
         <div class="w-8 h-8">
           <img src="../assets/img/Dropdown.svg" />
         </div>
@@ -494,6 +504,12 @@
   </footer>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useCart } from "~/store/cart";
+const cart = useCart();
+onMounted(() => {
+  cart.fetchCart();
+});
+</script>
 
 <style scoped></style>

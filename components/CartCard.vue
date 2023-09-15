@@ -15,8 +15,8 @@
       <div
         class="text-slate-700 text-lg font-medium flex justify-between items-center"
       >
-        <span>Qty: 1</span>
-        <span class="flex items-center">
+        <span>Qty: {{ product.qty }}</span>
+        <button class="flex items-center" @click="cart.removeItem(product.id)">
           <img
             src="@/assets/img/product/trash.svg"
             alt="Trash Icon"
@@ -25,7 +25,7 @@
           <span class="text-red-700 text-sm font-semibold cursor-pointer"
             >Remove</span
           >
-        </span>
+        </button>
       </div>
     </div>
     <div class="text-right text-gray-900 text-sm font-semibold leading-loose">
@@ -35,8 +35,6 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
-
 const truncatedTitle =
   product.title.length > 28
     ? product.title.slice(0, 28) + "..." // Add an ellipsis for longer titles
@@ -44,7 +42,8 @@ const truncatedTitle =
 
 const { product } = defineProps(["product"]);
 
-// Compute a truncated title with a maximum length of 25 characters
+import { useCart } from "~/store/cart";
+const cart = useCart();
 </script>
 
 <style scoped>

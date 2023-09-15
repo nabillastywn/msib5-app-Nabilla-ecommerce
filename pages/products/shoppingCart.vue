@@ -8,8 +8,8 @@
     <div class="card">
       <div class="grid grid-cols-2 gap-72">
         <div class="grid grid-cols-1 gap-4 ml-20 mr-24">
-          <div v-for="(p, index) in products" :key="p.id">
-            <CartCard :product="p" v-if="index < 4" />
+          <div v-for="p in cart.cartProduct">
+            <CartCard :product="p" />
           </div>
         </div>
         <!-- checkout button -->
@@ -44,17 +44,8 @@
 </template>
 
 <script setup>
-const { data: products } = await useFetch("https://fakestoreapi.com/products");
-import { ref } from "vue";
-
-// Initialize an empty cart as a reactive variable
-const cart = ref([]);
-
-// Function to add a product to the cart
-const addToCart = (product) => {
-  // Add the product to the cart
-  cart.value.push(product);
-};
+import { useCart } from "~/store/cart";
+const cart = useCart();
 </script>
 
 <style scoped></style>

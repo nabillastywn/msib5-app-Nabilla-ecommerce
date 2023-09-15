@@ -96,11 +96,11 @@
                   class="inline items-center relative"
                 />
               </button>
-              <button
-                class="bg-white border border-grey-200 py-2 px-3 text-sm text-slate-600 justify-center font-semibold items-center gap-2 inline-flex rounded w-10 h-10"
-              >
-                {{ quantity }}
-              </button>
+              <input
+                :v-model="quantity"
+                :value="quantity"
+                class="justify-center font-semibold items-center gap-2 inline-flex font-poppins py-2 px-3 text-center w-10 h-10 border border-gray-300 rounded-md text-md bg-white text-black"
+              />
               <button
                 class="bg-sky-600 border border-sky-600 py-2 px-3 justify-center items-center gap-2 inline-flex rounded w-10 h-10"
                 @click="increment"
@@ -126,15 +126,22 @@
 const { product } = defineProps(["product"]);
 const quantity = ref(1); // Initial quantity
 
+import { useCart } from "~/store/cart";
+const cart = useCart();
+
+const { emit } = defineEmits();
+
 const increment = () => {
   // Increment the quantity
   quantity.value++;
+  emit("value-updated", quantity.value);
 };
 
 const decrement = () => {
   // Ensure quantity doesn't go below 1
   if (quantity.value > 1) {
     quantity.value--;
+    emit("value-updated", quantity.value);
   }
 };
 </script>

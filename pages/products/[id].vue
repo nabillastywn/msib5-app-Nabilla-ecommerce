@@ -19,6 +19,7 @@
         </div>
         <button
           class="mt-2 bg-sky-600 py-2 px-3 text-sm text-white border-sky-600 font-semibold hover:bg-sky-700 rounded"
+          @click="useCart().addItem(product.id, Number(quantity))"
         >
           <img
             src="@/assets/img/product/plus.svg"
@@ -29,17 +30,25 @@
         </button>
       </div>
     </div>
-    <ProductDetails :product="product" />
+    <ProductDetails @value-updated="qtyValue" :product="product" />
   </div>
 </template>
 
 <script setup>
 import ProductDetails from "~/components/ProductDetails.vue";
 import { useRouter } from "vue-router";
-
+import { useCart } from "~/store/cart";
 const { id } = useRoute().params;
 const uri = "https://fakestoreapi.com/products/" + id;
 const router = useRouter();
+
+const qty = ref(1);
+
+console.log(qty.value);
+
+const qtyValue = (value) => {
+  qty.value = value;
+};
 
 // fetch the product
 const { data: product } = await useFetch(uri, { key: id });

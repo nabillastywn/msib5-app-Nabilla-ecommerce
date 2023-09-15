@@ -61,8 +61,8 @@
             </div>
           </div>
           <!-- <p class="font-bold text-gray-500 m-4 truncate">
-              {{ truncatedTitle }}
-            </p> -->
+            {{ truncatedTitle }}
+          </p> -->
         </div>
       </div>
     </NuxtLink>

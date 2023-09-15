@@ -55,7 +55,7 @@
         <Swiper
           :modules="modules"
           :slides-per-view="5"
-          :navigation="{ enabled: true, nextEl: '.swiper-button-next' }"
+          :navigation="{ enabled: true, nextEl: '.button-next' }"
           :space-between="10"
           :loop="true"
           :autoplay="{
@@ -68,7 +68,7 @@
             <FlashsaleCard :product="p" />
           </SwiperSlide>
           <div
-            class="swiper-button-next w-8 h-8 bg-gray-400 absolute z-10 right-0 top-[155px] rounded-full mr-[1px] mb-12"
+            class="button-next w-7 h-7 bg-gray-400 absolute z-10 right-0 top-[155px] rounded-full mr-[1px] mb-12"
           >
             <img src="../assets/img/flash/Group.svg" />
           </div>
@@ -96,10 +96,28 @@
         <div class="text-5xl font-bold text-yellow-300 mt-2 mb-3">50%</div>
       </div>
     </div>
-    <div class="grid grid-cols-4 gap-4 ml-72 mr-24 mt-[-355px]">
-      <div v-for="(p, index) in products" :key="p.id">
-        <LatestCard :product="p" v-if="index < 4" />
-      </div>
+    <div class="ml-72 mr-24 mt-[-355px]">
+      <Swiper
+        :modules="modules"
+        :slides-per-view="4"
+        :navigation="{ enabled: true, nextEl: '.button-next' }"
+        :space-between="10"
+        :loop="true"
+        :autoplay="{
+          delay: 7000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }"
+      >
+        <SwiperSlide v-for="p in products">
+          <LatestCard :product="p" />
+        </SwiperSlide>
+        <div
+          class="button-next w-7 h-7 bg-gray-400 absolute z-10 right-0 top-[155px] rounded-full mr-[1px] mb-12"
+        >
+          <img src="../assets/img/flash/Group.svg" />
+        </div>
+      </Swiper>
     </div>
     <div class="mx-24 px-31 flex mb-10 mt-24 items-center">
       <div class="font-bold text-secondary text-lg">Promo</div>
@@ -128,10 +146,28 @@
         <div class="text-5xl font-bold text-yellow-300 mt-2 mb-3">50%</div>
       </div>
     </div>
-    <div class="grid grid-cols-4 gap-4 ml-72 mr-24 mt-[-355px]">
-      <div v-for="(p, index) in products" :key="p.id">
-        <LatestCard :product="p" v-if="index < 4" />
-      </div>
+    <div class="ml-72 mr-24 mt-[-355px]">
+      <Swiper
+        :modules="modules"
+        :slides-per-view="4"
+        :navigation="{ enabled: true, nextEl: '.button-next' }"
+        :space-between="10"
+        :loop="true"
+        :autoplay="{
+          delay: 7000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }"
+      >
+        <SwiperSlide v-for="p in products">
+          <LatestCard :product="p" />
+        </SwiperSlide>
+        <div
+          class="button-next w-7 h-7 bg-gray-400 absolute z-10 right-0 top-[155px] rounded-full mr-[1px] mb-12"
+        >
+          <img src="../assets/img/flash/Group.svg" />
+        </div>
+      </Swiper>
     </div>
     <div class="mx-24 px-31 flex justify-between mb-10 mt-24 items-center">
       <div class="font-bold text-secondary text-lg">For You</div>
